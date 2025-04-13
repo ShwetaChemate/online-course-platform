@@ -1,9 +1,8 @@
-<!-- templates/non_admin/course_list.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Course List</title>
+    <title>Published Course List</title>
     <style>
         table {
             border-collapse: collapse;
@@ -21,10 +20,33 @@
         h2 {
             text-align: center;
         }
+        .logout-btn {
+            display: inline-block;
+            background-color: #007BFF;  /* Blue background color */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .logout-btn:hover {
+            background-color: #0056b3;  /* Darker blue on hover */
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
     <h2>Course List</h2>
+
     <table>
         <thead>
             <tr>
@@ -49,5 +71,14 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- Footer with Logout Button -->
+    <footer>
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </footer>
+
 </body>
 </html>

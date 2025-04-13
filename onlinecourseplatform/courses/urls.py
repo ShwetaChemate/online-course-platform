@@ -1,17 +1,15 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import CourseViewSet, PublishedCourseViewSet
-from . import views
+from .views import CourseViewSet, PublishedCourseViewSet, home, non_admin_course_view
+from django.contrib.auth.views import LogoutView
 
 router = DefaultRouter()
 router.register('courses', CourseViewSet, basename='course')
-router.register('published-courses', PublishedCourseViewSet)
+router.register('published-courses', PublishedCourseViewSet, basename='publishedcourse')
 
 urlpatterns = [
-    path('', views.home, name='home'),  # Login page
-    # path('non-admin/', views.redirect_to_courses, name='redirect_to_courses'),
-    path('non-admin/courses/', views.non_admin_course_view, name='non_admin_course_list'),
-    #path('non-admin/', views.CourseViewSet.get_queryset),
-    path('non-admin/courses/', include(router.urls)),
+    path('', home, name='home'),  # Login/Home page
+    path('non-admin/courses', non_admin_course_view, name='non_admin_course_list'),
+    path('', include(router.urls)),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
-
