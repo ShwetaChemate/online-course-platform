@@ -4,7 +4,6 @@ from .views import CourseViewSet, PublishedCourseViewSet, home, non_admin_course
 from django.contrib.auth.views import LogoutView
 
 router = DefaultRouter()
-router.register('courses', CourseViewSet, basename='course')
 router.register('published-courses', PublishedCourseViewSet, basename='publishedcourse')
 
 urlpatterns = [

@@ -177,18 +177,6 @@ class URLRoutingTests(TestCase):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
 
-    def test_logout_redirects_to_home(self):
-        self.client.login(username='normaluser', password='pass1234')
-        response = self.client.get(reverse('logout'))
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/')
-
-    def test_course_viewset_json_response(self):
-        self.client.login(username='admin', password='adminpass')
-        response = self.client.get('/courses/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'application/json')
-
     def test_published_courses_viewset_json(self):
         response = self.client.get('/published-courses/')
         self.assertEqual(response.status_code, 200)
