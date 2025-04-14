@@ -4,7 +4,7 @@
 
 You can either download the ZIP file or clone the repository using:
 ```bash
-   git clone <repository-url>
+   git clone https://github.com/ShwetaChemate/online-course-platform.git
    cd onlinecourseplatform
 ```
 
@@ -25,7 +25,7 @@ python3 manage.py createsuperuser
 
 ***Start the development server***
 ```bash
-python3 manage.py runserver
+python3 manage.py runserver 8008
 ```
 
 ***Logging in***
@@ -50,10 +50,15 @@ python3 manage.py runserver
 
 - **Superuser**: Can view, add, edit, and delete all courses (published or unpublished) (http://127.0.0.1:8008/admin/courses/course/).
 
+  <img width="1176" alt="Screenshot 2025-04-14 at 1 21 13 PM" src="https://github.com/user-attachments/assets/9ff342d2-9795-4c98-aea9-2072f434ffb9" />
+
 - **Staff user**: Can view all courses but cannot add, edit, or delete them (http://127.0.0.1:8008/admin/courses/course/).
+
+  <img width="1179" alt="Screenshot 2025-04-14 at 1 22 09 PM" src="https://github.com/user-attachments/assets/ee528171-23d7-478b-b9ee-e78dae80c137" />
 
 - **Normal user**: Can only view published courses (http://127.0.0.1:8008/non-admin/courses).
 
+<img width="1187" alt="Screenshot 2025-04-14 at 1 23 12 PM" src="https://github.com/user-attachments/assets/b986a47b-86db-4739-acb2-2790bdc8f0db" />
 
 ***Logging Out and Switching Users***
 
@@ -61,13 +66,13 @@ After logging out from the admin panel, you can log in again using a normal user
 
 ***Proxy Model: PublishedCourse***
 
-A proxy model named PublishedCourse is used.
+- A proxy model named PublishedCourse is used.
 
-It inherits from the main Course model.
+- It inherits from the main Course model.
 
-It filters and exposes only courses where is_published=True (http://127.0.0.1:8008/published-courses/).
+- It filters and exposes only courses where is_published=True (http://127.0.0.1:8008/published-courses/).
 
-This helps separate the API for published courses without duplicating the model structure.
+- This helps separate the API for published courses without duplicating the model structure.
 
 <img width="1448" alt="Screenshot 2025-04-14 at 1 15 32 PM" src="https://github.com/user-attachments/assets/271478f3-481b-48ed-ba29-9858f024cdef" />
 
