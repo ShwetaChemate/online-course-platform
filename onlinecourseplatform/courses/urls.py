@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import CourseViewSet, PublishedCourseViewSet, home, non_admin_course_view
+from .views import PublishedCourseViewSet, home, non_admin_course_view
 from django.contrib.auth.views import LogoutView
 
 router = DefaultRouter()
